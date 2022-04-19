@@ -10,8 +10,13 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </head>
   <body>
-    <!-- <model-viewer> HTML element -->
-    <model-viewer bounds="tight" src="Sphere_Bot.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1.58" environment-image="neutral" exposure="0.22" shadow-softness="1" animation-name="05_Sphere_bot_WalkCycle" camera-target="0m 1m 0m" autoplay>
+    <model-viewer bounds="tight" enable-pan src="Sphere_Bot_High_Poly.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls environment-image="aircraft_workshop_01_1k.hdr" poster="poster.webp" shadow-intensity="1" animation-name="05_Sphere_bot_WalkCycle" autoplay>
+    <button class="Hotspot" slot="hotspot-1" data-position="0.016266785880931254m 0.1764272849297191m 0.031348174862436434m" data-normal="0.7597202020220105m -0.5137013151925716m 0.39866799897791866m" data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">Core</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-2" data-position="0.14559164805459357m 0.34751495969148105m 0.11369450065401637m" data-normal="0.6953848374894088m 0.5520237358924971m 0.4601192484575267m" data-visibility-attribute="visible">
+      <div class="HotspotAnnotation">Shell</div>
+    </button>
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
