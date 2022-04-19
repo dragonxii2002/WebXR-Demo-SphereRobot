@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <title>&lt;model-viewer&gt; template</title>
@@ -10,20 +10,39 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
-    <!-- <model-viewer> HTML element -->
-    <model-viewer bounds="tight" enable-pan src="Sphere_Bot.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.png" shadow-intensity="1" autoplay animation-name="05_Sphere_bot_WalkCycle" camera-target="0.29m 0.38m 0.16m">
-      <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
-      </div>
-      <button slot="ar-button" id="ar-button">
-          View in your space
-      </button>
-      <div id="ar-prompt">
-          <img src="ar_hand_prompt.png">
-      </div>
-    </model-viewer>  
-    <script src="script.js"></script>
-    <!-- Loads <model-viewer> for browsers: -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+      <!-- <model-viewer> HTML element -->
+      <model-viewer bounds="tight" enable-pan src="Sphere_Bot.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.png" shadow-intensity="1" autoplay animation-name="05_Sphere_bot_WalkCycle" camera-target="0.29m 0.38m 0.16m">
+          <div class="progress-bar hide" slot="progress-bar">
+              <div class="update-bar"></div>
+          </div>
+          <div class="controls">
+              <div>Change Color: <select id="variant"></select></div>
+          </div>
+          <button slot="ar-button" id="ar-button">
+              View in your space
+          </button>
+          <div id="ar-prompt">
+              <img src="ar_hand_prompt.png">
+          </div>
+      </model-viewer>
+      <script>
+          const modelViewerVariants = document.querySelector("model-viewer");
+          const select = document.querySelector('#variant');
+          modelViewerVariants.addEventListener('load', () => {
+              const names = modelViewerVariants.availableVariants;
+              for (const name of names) {
+                  const option = document.createElement('option');
+                  option.value = name;
+                  option.textContent = name;
+                  select.appendChild(option);
+              }
+          });
+          select.addEventListener('input', (event) => {
+              modelViewerVariants.variantName = event.target.value;
+          });
+      </script>
+      <script src="script.js"></script>
+      <!-- Loads <model-viewer> for browsers: -->
+      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </body>
 </html>
